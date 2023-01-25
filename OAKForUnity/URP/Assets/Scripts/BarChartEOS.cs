@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BarChart : MonoBehaviour
+public class BarChartEOS : MonoBehaviour
 {
-    public Bar barPrefab;
-    public Summary summaryPrefab;
+    public BarEOS barPrefab;
+    public SummaryEOS summaryPrefab;
     float chartWidth;
-    List<Bar> bars = new List<Bar>();
     void Start()
     {
         chartWidth = Screen.width + GetComponent<RectTransform>().sizeDelta.x;
@@ -23,7 +22,7 @@ public class BarChart : MonoBehaviour
     {
         for(int i = 0; i < vals.Length; i++)
         {
-            Bar newBar = Instantiate(barPrefab) as Bar;
+            BarEOS newBar = Instantiate(barPrefab) as BarEOS;
             newBar.transform.SetParent(transform);
             RectTransform rt = newBar.bar.GetComponent<RectTransform>();
             if (vals[i] == 1f)
@@ -40,7 +39,7 @@ public class BarChart : MonoBehaviour
     }
     void DisplaySummary(float[] vals)
     {
-        Summary newSum = Instantiate(summaryPrefab) as Summary;
+        SummaryEOS newSum = Instantiate(summaryPrefab) as SummaryEOS;
         newSum.transform.SetParent(transform);
         newSum.summaryDescription.text = "You used " + (vals[0] * 100).ToString() + "% of your Top Left portion of your space. \n" + "You used " + (vals[1] * 100).ToString() + "% of your Top Right portion of your space. \n" +
                                          "You used " + (vals[2] * 100).ToString() + "% of your Bottom Left portion of your space. \n" + "You used " + (vals[3] * 100).ToString() + "% of your Bottom Right portion of your space. \n";

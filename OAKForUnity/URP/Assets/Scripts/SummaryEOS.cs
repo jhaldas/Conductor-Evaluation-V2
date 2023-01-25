@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Summary : MonoBehaviour
+public class SummaryEOS : MonoBehaviour
 {
     public TMP_Text summaryDescription;
 }
